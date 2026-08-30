@@ -53,3 +53,20 @@ Next.js App Router + TypeScript on Vercel · Supabase (Postgres + RLS + magic-li
 ## Phase discipline
 
 **Phase 0 is not code.** Run the forming session by hand — a form, a spreadsheet, a call, the prompts read aloud — six times, and check whether those groups are still talking two weeks later. Every expensive failure in this category shipped software before validating the ritual. Do not write Phase 1 until Phase 0 has an answer.
+
+## Deploy Configuration (configured by /setup-deploy)
+
+- Platform: Vercel
+- Production URL: https://scenes.chat
+- Deploy workflow: automatic production deploy on push to `main`
+- Deploy status command: `vercel inspect scenes.chat --scope adamtpangs-projects`
+- Merge method: squash
+- Project type: web app
+- Post-deploy health check: https://scenes.chat
+
+### Custom deploy hooks
+
+- Pre-merge: `npm audit --audit-level=high && npm run build`
+- Deploy trigger: automatic on push to `main`
+- Deploy status: `vercel inspect scenes.chat --scope adamtpangs-projects`
+- Health check: https://scenes.chat

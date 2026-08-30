@@ -1,38 +1,10 @@
 # Remaining setup
 
-Everything is built and committed. Two things need your account credentials,
-which the assistant's connectors are not scoped to do.
+The repository is public at `adamtpang/scenes.chat`. Vercel deploys `main`
+automatically, and the landing page is live at `https://scenes.chat` and
+`https://www.scenes.chat`.
 
-## 1. Create the GitHub repo and push (about 30 seconds)
-
-```bash
-cd ~/Aether/scenes.chat
-gh repo create scenes.chat --public --source=. --remote=origin --push
-```
-
-No `gh`? Create an empty repo named `scenes.chat` at https://github.com/new
-(no README, no .gitignore), then:
-
-```bash
-git remote add origin https://github.com/adamtpang/scenes.chat.git
-git push -u origin main
-```
-
-## 2. Create the Vercel project
-
-Easiest is the dashboard: https://vercel.com/new — import `adamtpang/scenes.chat`,
-accept the detected Next.js settings, deploy. Then in Project → Settings → Domains,
-add `scenes.chat` and `www.scenes.chat`.
-
-Or from the CLI:
-
-```bash
-npx vercel link
-npx vercel domains add scenes.chat
-npx vercel --prod
-```
-
-## 3. Turn the waitlist on (optional, do it whenever)
+## Turn the waitlist on (optional, do it whenever)
 
 The form currently returns a clear "email me instead" message rather than
 pretending a signup worked. To make it store emails:
