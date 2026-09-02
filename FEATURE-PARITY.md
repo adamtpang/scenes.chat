@@ -58,7 +58,7 @@ Status reflects the deployed Scenes codebase, not plans in `SPEC.md`.
 | Journey | Capability | Classic AirChat evidence | Scenes adaptation | Status | Acceptance evidence |
 |---|---|---|---|---|---|
 | Acquisition | Clear value proposition | Inferred from invite-led launch [S1, S4] | Explain placement, forming, and persistent private voice | Partial | Landing page is live; product preview and pilot logistics need strengthening |
-| Activation | Short intake | Short invite onboarding [S4] | Email → availability, language, and topic signals; no public profile | Partial | Email form exists, but production has no storage configuration |
+| Activation | Short intake | Short invite onboarding [S4] | Email → availability, language, and topic signals; no public profile | Match | Production submission, private persistence, deduplication, and CSV export verified 2026-09-02 |
 | Activation | Placement into a conversation | AirChat entered a followed feed [S1] | Weekly placement into a new fixed cohort | Missing | Manual placement runbook and six completed cohorts |
 | Formation | Facilitated first session | Not present in target | Mandatory three-round Fast Friends script | Missing | A complete live run with attendance and post-session handoff |
 | Create | One-gesture voice capture | Hold to record, release to post, cancel [S2, S3] | Press-and-hold or accessible toggle; 60/90/120 s caps during forming | Missing | Mobile capture tests across supported browsers |
@@ -102,9 +102,8 @@ in `SPEC.md`.
 
 ## Current priority
 
-1. Make Phase 0 acquisition real: remove the failing production waitlist state,
-   collect the minimum intake needed to schedule the first cohort, and avoid
-   publishing a private email address.
+1. Recruit and hand-match the first cohort from the live private intake, then
+   schedule one fixed weekly forming time.
 2. Run and log six manual forming sessions, then measure whether members are
    still talking two weeks later.
 3. If Phase 0 passes, build the durable turn pipeline before visual breadth:
