@@ -10,7 +10,8 @@ for the working constraints.
 ## Stack
 
 - Next.js (App Router) + TypeScript, deployed on Vercel
-- Supabase for the waitlist (and, later, auth + data)
+- Vercel Private Blob for the Phase 0 pilot intake
+- Supabase for Phase 1 auth, relational data, RLS, and audio storage
 
 ## Local dev
 
@@ -19,17 +20,33 @@ npm install
 npm run dev
 ```
 
-## Waitlist
+## Pilot intake
 
-The landing page posts to `/api/waitlist`, which inserts into a Supabase `waitlist` table.
+The landing page posts the minimum matching signal to `/api/waitlist`. The route
+validates the submission and stores one JSON object per applicant in the private
+`scenes-intake` Vercel Blob store. Filenames are deterministic SHA-256 hashes of
+normalized email addresses, so repeat applications update instead of duplicating.
+The browser never receives storage credentials or blob URLs.
 
-Until `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` are set, the endpoint
-returns a 503 and the form tells people to email instead — it never pretends a signup
-worked. To wire it up:
+Vercel injects `BLOB_READ_WRITE_TOKEN` into production, preview, and development.
+To run the form locally, pull the development environment:
 
-1. Create a Supabase project (or free a slot — the free tier allows two active projects).
-2. Run the migration in `supabase/migrations/0001_waitlist.sql`.
-3. Set both env vars in Vercel and redeploy.
+```bash
+vercel env pull .env.local
+```
+
+Export private applications as CSV for manual matching:
+
+```bash
+npm run intake:export
+```
+
+The command prints CSV to standard output and never exposes blob URLs. Redirect
+it only to a private location outside the repository when a spreadsheet file is
+needed.
+
+The old Supabase waitlist migration is retained as a migration path, but it is
+not part of Phase 0 production.
 
 ## Phase 0
 

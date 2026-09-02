@@ -189,18 +189,15 @@ export default function Home() {
           </p>
         </div>
         <div style={{ marginTop: 26 }}>
-          <WaitlistForm />
+          <a className="cta" href="#apply">
+            Apply for a pilot seat
+          </a>
         </div>
       </section>
 
       <footer>
         <p className="small faint">
-          scenes.chat — an experiment in making friends online, run out of
-          Singapore.
-        </p>
-        <p className="small faint">
-          Questions, or want in early?{" "}
-          <a href="mailto:adamtpang@gmail.com">adamtpang@gmail.com</a>
+          scenes.chat — an experiment in making internet friendship feel human.
         </p>
       </footer>
     </div>

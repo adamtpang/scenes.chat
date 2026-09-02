@@ -42,6 +42,24 @@ a {
   text-underline-offset: 2px;
 }
 
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 11px 20px;
+  background: var(--amber);
+  color: #1A1208;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.cta:hover {
+  filter: brightness(1.08);
+}
+
 :focus-visible {
   outline: 2px solid var(--amber);
   outline-offset: 3px;
@@ -295,34 +313,100 @@ section {
 .signup {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  max-width: 460px;
+  gap: 18px;
+  max-width: 680px;
+  padding: 22px;
+  background: var(--raise);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
 }
 
-.row {
+.signup-head {
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 6px;
 }
 
-input[type="email"] {
-  flex: 1 1 220px;
+.signup fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  color: var(--ink-2);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.signup input[type="email"],
+.signup input[type="text"],
+.signup select {
+  width: 100%;
   min-width: 0;
   background: var(--sunk);
   border: 1px solid var(--rule);
   border-radius: 5px;
-  padding: 13px 15px;
+  padding: 12px 14px;
   color: var(--ink);
   font: inherit;
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
-input[type="email"]::placeholder {
+.signup input::placeholder {
   color: var(--faint);
 }
 
-input[type="email"]:focus {
+.signup input:focus,
+.signup select:focus {
   border-color: var(--amber-dim);
+}
+
+.signup select {
+  color-scheme: dark;
+}
+
+.hint {
+  color: var(--faint);
+  font-size: 0.76rem;
+}
+
+.check {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  color: var(--ink-2);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.check input {
+  width: 16px;
+  height: 16px;
+  margin: 2px 0 0;
+  accent-color: var(--amber);
+}
+
+.trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 button {
@@ -337,6 +421,10 @@ button {
   cursor: pointer;
   transition: filter 0.15s ease;
   flex: 0 0 auto;
+}
+
+.signup button {
+  width: 100%;
 }
 
 button:hover:not(:disabled) {
@@ -384,6 +472,18 @@ footer {
 
   section {
     margin-top: 60px;
+  }
+
+  .signup {
+    padding: 18px;
+  }
+
+  .signup fieldset {
+    grid-template-columns: 1fr;
+  }
+
+  .signup .full {
+    grid-column: auto;
   }
 }
 
