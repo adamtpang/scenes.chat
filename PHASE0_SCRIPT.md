@@ -147,8 +147,10 @@ of their room.
 
 ## Before the session (Adam does these by hand)
 
-**7 days before:** pick 7 from the intake export. Same slot, same language,
-no two people with the same "deep in." That is the whole matching rule.
+**7 days before:** export the intake, then keep only rows whose email
+appears as a paid "scenes.chat pilot seat" in the Stripe dashboard. From
+those, pick 7. Same slot, same language, no two people with the same "deep
+in." That is the whole matching rule. Refund anyone unseated after two cycles.
 
 ```bash
 npm run intake:export

@@ -48,8 +48,18 @@ needed.
 The old Supabase waitlist migration is retained as a migration path, but it is
 not part of Phase 0 production.
 
+## Seat fee
+
+After the intake saves, the form shows a $5 Stripe payment link with the
+applicant's email prefilled (`app/offer.ts`). The fee is a quality filter and
+a no-show deterrent, per `SPEC.md` section 9. Payment is not written back to
+the intake store. Before matching, open the Stripe dashboard, list payments
+for the product "scenes.chat pilot seat", and match only applicants whose
+email appears there. Refund anyone who paid but was not seated within two
+forming cycles.
+
 ## Phase 0
 
-Before building the app itself, the formation ritual gets run by hand — a form, a
+Before building the app itself, the formation ritual gets run by hand: a form, a
 spreadsheet, a call, the prompts read aloud. Six times. The question being tested is
 whether those groups are still talking two weeks later. See `SPEC.md` §8.

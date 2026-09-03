@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { SEAT_PRICE_LABEL, seatCheckoutUrl } from "./offer";
 
 type State = "idle" | "sending" | "done" | "error";
 
 export default function WaitlistForm() {
   const [state, setState] = useState<State>("idle");
   const [message, setMessage] = useState("");
+  const [email, setEmail] = useState("");
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -17,6 +19,9 @@ export default function WaitlistForm() {
 
     try {
       const form = new FormData(event.currentTarget);
+      const submittedEmail = String(form.get("email") ?? "")
+        .trim()
+        .toLowerCase();
       const res = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -34,9 +39,10 @@ export default function WaitlistForm() {
       const data: { error?: string } = await res.json().catch(() => ({}));
 
       if (res.ok) {
+        setEmail(submittedEmail);
         setState("done");
         setMessage(
-          "Application saved. You'll get one email when there's a pilot seat.",
+          `Application saved. Reserve your seat for ${SEAT_PRICE_LABEL} and you're in the next forming.`,
         );
         return;
       }
@@ -56,8 +62,9 @@ export default function WaitlistForm() {
       <div className="signup-head">
         <p className="eyebrow">Apply for a pilot seat</p>
         <p className="small faint">
-          Two minutes. These answers are used only to form a small group—never
-          to make a public profile.
+          Two minutes, then a {SEAT_PRICE_LABEL} seat fee so the people in your
+          room actually show up. These answers are used only to form a small
+          group, never to make a public profile.
         </p>
       </div>
 
@@ -167,13 +174,19 @@ export default function WaitlistForm() {
         </button>
       </fieldset>
 
+      {state === "done" && (
+        <a className="cta full" href={seatCheckoutUrl(email)}>
+          Reserve your seat, {SEAT_PRICE_LABEL}
+        </a>
+      )}
+
       <p
         className={`note${state === "done" ? " ok" : ""}${state === "error" ? " err" : ""}`}
         role="status"
         aria-live="polite"
       >
         {message ||
-          "Pilot seats are 18+. No spam or launch sequence—one email when there's a match."}
+          `Pilot seats are 18+ and ${SEAT_PRICE_LABEL}, refunded if we can't seat you. One email when there's a match, nothing else.`}
       </p>
     </form>
   );
