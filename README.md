@@ -58,6 +58,23 @@ for the product "scenes.chat pilot seat", and match only applicants whose
 email appears there. Refund anyone who paid but was not seated within two
 forming cycles.
 
+## Prototype cohort (`/proto`)
+
+A disposable turn-pipeline prototype that runs in parallel with Phase 0 (see the
+2026-09-03 amendment in `CLAUDE.md`). Voice and text turns live as JSON in the
+same private Blob store under `proto/`, audio as WAV under `proto/audio/`.
+Peaks are computed server-side at ingest. Nothing here is Phase 1 schema.
+
+Environment:
+
+- `PROTO_PASSCODE`: if set, every write must carry it. Set this before the
+  prototype is reachable on a public URL, or `/proto` is an open upload endpoint.
+- `TRANSCRIBE_API_KEY`: enables transcription. Without it every voice turn
+  lands as `unavailable` with the audio intact.
+- `TRANSCRIBE_BASE_URL` (default `https://api.openai.com/v1`) and
+  `TRANSCRIBE_MODEL` (default `whisper-1`): any OpenAI-compatible endpoint that
+  supports `verbose_json` with word timestamps.
+
 ## Phase 0
 
 Before building the app itself, the formation ritual gets run by hand: a form, a

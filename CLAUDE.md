@@ -54,6 +54,8 @@ Next.js App Router + TypeScript on Vercel · Supabase (Postgres + RLS + magic-li
 
 **Phase 0 is not code.** Run the forming session by hand — a form, a spreadsheet, a call, the prompts read aloud — six times, and check whether those groups are still talking two weeks later. Every expensive failure in this category shipped software before validating the ritual. Do not write Phase 1 until Phase 0 has an answer.
 
+**Amendment, 2026-09-03 (Adam's call): Phase 0 and a throwaway turn-pipeline prototype run in parallel.** The gate above still applies to launching Phase 1. It no longer applies to prototyping the durable turn pipeline (record, turn appears as `processing`, stored peaks, transcript, chronological voice-and-text timeline) under `app/proto/`. The prototype has no auth, no cohorts, and no matching; it exists so the AirChat-parity interaction can be dogfooded while the six manual sessions run. It is disposable and must not grow product surface (no directory, no feed, no profiles) while the gate is closed.
+
 ## Deploy Configuration (configured by /setup-deploy)
 
 - Platform: Vercel
