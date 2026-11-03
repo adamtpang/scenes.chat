@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/patch-next-font-loader.mjs && next build",
+    "postinstall": "node scripts/patch-next-font-loader.mjs",
     "start": "next start",
     "lint": "next lint",
     "intake:export": "node scripts/export-intake.mjs"
