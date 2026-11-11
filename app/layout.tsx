@@ -24,6 +24,7 @@ const description =
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://scenes.chat"),
+  alternates: { canonical: "/" },
   title,
   description,
   openGraph: {
@@ -46,6 +47,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://scenes.chat/#website\",\"url\":\"https://scenes.chat\",\"name\":\"Scenes\",\"description\":\"Small rooms for making internet friends.\",\"publisher\":{\"@id\":\"https://scenes.chat/#organization\"}},{\"@type\":\"Organization\",\"@id\":\"https://scenes.chat/#organization\",\"name\":\"Scenes\",\"url\":\"https://scenes.chat\"}]}" }}
+        />
         <Script id="posthog-fleet" strategy="afterInteractive">{`(function(){if(window.__posthogFleet)return;window.__posthogFleet=1;var s=document.createElement('script');s.async=true;s.src='https://us-assets.i.posthog.com/static/array.js';s.onload=function(){if(!window.posthog||!window.posthog.init)return;window.posthog.init('phc_FCpCP9mIsb9IcxpX0Qqi6FmJ48sVvscAYIrZmtRHIq4',{api_host:'https://us.i.posthog.com',person_profiles:'identified_only',capture_pageview:'history_change',capture_pageleave:true,autocapture:false,disable_session_recording:true,disable_surveys:true,loaded:function(p){p.register({site:location.hostname})}});};document.head.appendChild(s);})();`}</Script>{children}</body>
     </html>
   );
