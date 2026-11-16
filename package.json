@@ -11,13 +11,13 @@
     "intake:export": "node scripts/export-intake.mjs"
   },
   "dependencies": {
-    "@vercel/blob": "^2.8.0",
+    "@vercel/blob": "^2.9.0",
     "extendable-media-recorder": "^9.2.40",
     "extendable-media-recorder-wav-encoder": "^7.0.140",
     "next": "15.5.29",
-    "react": "19.1.1",
-    "react-dom": "19.1.1",
-    "wavesurfer.js": "^7.12.11"
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "wavesurfer.js": "^7.12.12"
   },
   "devDependencies": {
     "@types/node": "^22",
